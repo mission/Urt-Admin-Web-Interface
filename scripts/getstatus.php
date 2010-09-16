@@ -77,7 +77,7 @@ function checkexists($ip, $port) {
 		include "../classes/config_inc.php";
 		$link = mysql_connect($db_host,$db_user,$db_pass) or die('Unable to establish a DB connection');
 		mysql_select_db($db_database, $link);
-		$result991 = mysql_query("select * from `".$db_prefix."_serverinfo` where `ip`='$ip' and `port`='$port' Limit 1");
+		$result991 = mysql_query("select * from `".$db_prefix."_status` where `ip`='$ip' and `port`='$port' Limit 1");
 		if (mysql_num_rows($result991) > 0) {
 			mysql_close($link);
 			return true;
@@ -90,11 +90,10 @@ function checkexists($ip, $port) {
 }
 function insertdb($ip, $port, $data, $date) {
 		if (checkexists($ip, $port) == true) {
-			$sql = "update `".$db_prefix."_serverinfo` set `data`=\"$data\",`updated`=\"$date\" where `ip`=\"$ip\" and `port`=\"$port\"";
+			$sql = "update `".$db_prefix."_status` set `data`=\"$data\",`updated`=\"$date\" where `ip`=\"$ip\" and `port`=\"$port\"";
 		} else {
-			$sql = "insert into `".$db_prefix."_serverinfo` values('$ip', '$port', \"$data\", \"$date\")";
+			$sql = "insert into `".$db_prefix."_status` values('$ip', '$port', \"$data\", \"$date\")";
 		}
-		echo "using: $sql";
 		include "../classes/config_inc.php";
 		$link = mysql_connect($db_host,$db_user,$db_pass) or die('Unable to establish a DB connection');
 		mysql_select_db($db_database, $link);
