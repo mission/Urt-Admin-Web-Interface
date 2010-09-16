@@ -17,7 +17,7 @@ You should have received a copy of the GNU Affero General Pulbic License along w
 2. create a database, edit config_inc.php to your desired settings
 3. import the urtadmin.sql file thats located in the sql folder into your mysql database
 4. open ur browser to the admin directory and use the form to add admin accounts
-5. add a cron job that loads classes/getStatus.php every x minutes, this script cycles through the servers entered in the 
+5. add a cron job that loads classes/getPlayers.php every x minutes, this script cycles through the servers entered in the 
 database and gets the current players, then adds them to the database
 DONE! :)
 ==============
