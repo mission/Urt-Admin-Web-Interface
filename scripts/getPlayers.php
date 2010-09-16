@@ -1,5 +1,5 @@
 <?php
-
+define("INCLUDE_CHECK", true);
 include_once('q3rcon.php');
 include_once('q3status.php');
 include "../classes/config_inc.php";

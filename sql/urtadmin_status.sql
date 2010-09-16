@@ -16,16 +16,16 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `urtAlpha`
+-- Database: `urtAdmin`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `urtAlpha_status`
+-- Table structure for table `urtAdmin_status`
 --
 
-CREATE TABLE IF NOT EXISTS `urtAlpha_status` (
+CREATE TABLE IF NOT EXISTS `urtAdmin_status` (
   `ip` varchar(100) NOT NULL,
   `port` varchar(100) NOT NULL,
   `data` varchar(10000) NOT NULL,

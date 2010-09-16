@@ -1,4 +1,5 @@
 <?php
+define("INCLUDE_CHECK", true);
 include "../classes/config_inc.php";
 include "../classes/q3status.php";
 $link1 = mysql_connect("$db_host", "$db_user", "$db_pass") or die(mysql_error());
@@ -54,8 +55,11 @@ function getmapscrshot($mapname) {
 		mysql_select_db($db_database, $link);
 		$sql = "Select * from `".$db_prefix."_maps` where `map`=\"$mapname\"";
 		$result2 = mysql_query($sql);
+		echo mysql_error()."<br>";
 		if (!$result2) {
 			$scrn = "images/mapshots/missing.jpg";
+			mysql_close($link);
+			return $scrn;
 		} else {
 			$row2 = mysql_fetch_assoc($result2);
 			$scrn1[0] = $row2['screenshot1'];
@@ -68,36 +72,43 @@ function getmapscrshot($mapname) {
 			} else {
 				$scrn = "images/mapshots/missing.jpg";
 			}
+			mysql_free_result($result2);
+			mysql_close($link);
+			return $scrn;
 		}
-		mysql_free_result($result2);
-		mysql_close($link);
-		return $scrn;
 }
 function checkexists($ip, $port) {
 		include "../classes/config_inc.php";
 		$link = mysql_connect($db_host,$db_user,$db_pass) or die('Unable to establish a DB connection');
 		mysql_select_db($db_database, $link);
-		$result991 = mysql_query("select * from `".$db_prefix."_status` where `ip`='$ip' and `port`='$port' Limit 1");
-		if (mysql_num_rows($result991) > 0) {
-			mysql_close($link);
-			return true;
-		} else {
+		$result = mysql_query("select * from `".$db_prefix."_status` where `ip`='$ip' and `port`='$port' Limit 1");
+
+		if (!$result) {
 			mysql_close($link);
 			return false;
+		} else {
+			if (mysql_num_rows($result) > 0) {
+				mysql_close($link);
+				return true;
+			} else {
+				mysql_close($link);
+				return false;
+			}
 		}
-		mysql_close($link);
-		
 }
 function insertdb($ip, $port, $data, $date) {
+		include "../classes/config_inc.php";
 		if (checkexists($ip, $port) == true) {
 			$sql = "update `".$db_prefix."_status` set `data`=\"$data\",`updated`=\"$date\" where `ip`=\"$ip\" and `port`=\"$port\"";
 		} else {
 			$sql = "insert into `".$db_prefix."_status` values('$ip', '$port', \"$data\", \"$date\")";
 		}
+		echo $sql."<br>";
 		include "../classes/config_inc.php";
 		$link = mysql_connect($db_host,$db_user,$db_pass) or die('Unable to establish a DB connection');
 		mysql_select_db($db_database, $link);
 		mysql_query($sql);
+		echo mysql_error();
 		mysql_close($link);
 }
 ?>
