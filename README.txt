@@ -12,6 +12,17 @@ This program is distributed in the hope that it will be useful, but WITHOUT ANY 
 
 You should have received a copy of the GNU Affero General Pulbic License along with this program. If not, see http://www.gnu.org/licenses/.
 
+Update: 09/16/2010
+==================
+you can now use the ts3 module! first import the urtadmin_ts3.sql file into your database, then add a cron job that runs the updatets3.php script every x minutes. now just add the ts3 module entry in your modules table, requiredarg1 = serverip, requiredarg2 = server port, requiredarg3 = virtual server id.
+
+You can also now use the serverview module. The serverview module displays the servername, number of players, map screenshot, and list of players and there scores, and the /connect info. the map screenshots have been included, please read the README.txt file included in the mapshots folder.
+To use: import the urtadmin_status.sql file into your database, then add a cron job that runs the getstatus.php script(this script will cycle through all the servers that are set to Online status in the servers table) now just add an new entry into the modules table, requiredarg1 = ip, requiredarg2 = port, requiredarg3 = Not used. You may wanna play around with the different positions.
+
+
+Note: valid pos entries for modules table: news, reg, admin, left, body, user1, user2, user3, and footer
+
+
 ===Install===
 1. put the content of this zip file in a folder on your webserver
 2. create a database, edit config_inc.php to your desired settings
