@@ -1,0 +1,117 @@
+
+select.select
+{
+	color:#333;
+	font-size:100%;
+	margin:1px 0;
+	padding:1px 0 0;
+	background:#fff url(images/shadow.gif) repeat-x top;
+	border-bottom:1px solid #ddd;
+	border-left:1px solid #c3c3c3;
+	border-right:1px solid #c3c3c3;
+	border-top:1px solid #7c7c7c;
+}
+
+
+input.currency
+{
+	text-align:right;
+}
+
+input.checkbox
+{
+	display:block;
+	height:13px;
+	line-height:1.4em;
+	margin:6px 0 0 3px;
+	width:13px;
+}
+
+input.radio
+{
+	display:block;
+	height:13px;
+	line-height:1.4em;
+	margin:6px 0 0 3px;
+	width:13px;
+}
+
+label.choice
+{
+	color:#444;
+	display:block;
+	font-size:100%;
+	line-height:1.4em;
+	margin:-1.55em 0 0 25px;
+	padding:4px 0 5px;
+	width:90%;
+}
+
+select.select[class]
+{
+	margin:0;
+	padding:1px 0;
+}
+
+*:first-child+html select.select[class]
+{
+	margin:1px 0;
+}
+
+.safari select.select
+{
+	font-size:120% !important;
+	margin-bottom:1px;
+}
+
+input.small
+{
+	width:25%;
+}
+
+input.tiny
+{
+	width:8%;
+}
+
+select.small
+{
+	width:25%;
+}
+
+input.medium
+{
+	width:50%;
+}
+
+select.medium
+{
+	width:50%;
+}
+
+input.large
+{
+	width:99%;
+}
+
+select.large
+{
+	width:100%;
+}
+
+textarea.small
+{
+	height:5.5em;
+}
+
+textarea.medium
+{
+	height:10em;
+}
+
+textarea.large
+{
+	height:20em;
+}
+
+
