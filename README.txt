@@ -24,6 +24,8 @@ Note: valid pos entries for modules table: news, reg, admin, left, body, user1, 
 
 
 ===Install===
+Warning: this requires a mysql database
+
 1. put the content of this zip file in a folder on your webserver
 2. create a database, edit config_inc.php to your desired settings
 3. import the urtadmin.sql file thats located in the sql folder into your mysql database
