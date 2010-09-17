@@ -10,7 +10,7 @@ if (!$con)
 
 mysql_select_db("$db_database",$con);
 
-$sql="SELECT * FROM ".$db_prefix."_Servers WHERE `id`='$q' LIMIT 1";
+$sql="SELECT * FROM ".$db_prefix."_servers WHERE `id`='$q' LIMIT 1";
 
 $result4 = mysql_query($sql);
 $row = mysql_fetch_array($result4);

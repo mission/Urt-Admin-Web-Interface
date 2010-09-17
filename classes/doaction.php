@@ -2,10 +2,11 @@
 
 class doaction {
 	public function ban($ip, $bname, $breason, $blength, $badmin) {
-		include("connect.php");
+		define("INCLUDE_CHECK", true);
+		include("config_inc.php");
 		$link = mysql_connect($db_host,$db_user,$db_pass) or die('Unable to establish a DB connection');
 		mysql_select_db($db_database,$link);
-		$sql = "SELECT * FROM `Servers` WHERE `Status`='Online'";
+		$sql = "SELECT * FROM `".$db_prefix."_servers` WHERE `Status`='Online'";
 		$result = mysql_query($sql);
 		if (!$result) {
 			echo "You have 0 servers or none of the servers are online<br>";
@@ -33,17 +34,17 @@ class doaction {
 			$i++;
 		}
 		$bdate = date('h:i:s a m-d-Y');
-		$sql2 = "Insert into `bans`(player, ip, admin, reason, length, date, Status, UnbanDate) values(\"$bname\", \"$ip\", \"$badmin\", \"$breason\", \"$blength\", \"$bdate\", \"Active\", \"N/A\")";
+		$sql2 = "Insert into `".$db_prefix."_bans`(player, ip, admin, reason, length, date, Status, UnbanDate) values(\"$bname\", \"$ip\", \"$badmin\", \"$breason\", \"$blength\", \"$bdate\", \"Active\", \"N/A\")";
 		mysql_query($sql2);
 		$out[$i] = "</div>";
 		return $out;
 	}
 	public function kick($slot, $svid) {
-		//include("q3rcon.php");
-		include("connect.php");
+		define("INCLUDE_CHECK", true);
+		include("config_inc.php");
 		$link = mysql_connect($db_host,$db_user,$db_pass) or die('Unable to establish a DB connection');
 		mysql_select_db($db_database,$link);
-		$sql = "SELECT * FROM Servers WHERE id = '".$svid."'";
+		$sql = "SELECT * FROM ".$db_prefix."_servers WHERE id = '".$svid."'";
 		$result = mysql_query($sql);
 		if (!$result) {
 			echo "You have 0 servers or none of the servers are online<br>";
@@ -64,11 +65,11 @@ class doaction {
 	}
 	
 	public function slap1($plslot, $svid) {
-		//include("q3rcon.php");
-		include("connect.php");
+		define("INCLUDE_CHECK", true);
+		include("config_inc.php");
 		$link = mysql_connect($db_host,$db_user,$db_pass) or die('Unable to establish a DB connection');
 		mysql_select_db($db_database,$link);
-		$sql = "SELECT * FROM Servers WHERE id = '".$svid."'";
+		$sql = "SELECT * FROM ".$db_prefix."_servers WHERE id = '".$svid."'";
 		$result = mysql_query($sql);
 		if (!$result) {
 			echo "You have 0 servers or none of the servers are online<br>";
@@ -97,7 +98,7 @@ class doaction {
 
 class banip {
 	public function ban($serverip, $serverport, $serverrcon, $serverver, $ip) {
-		//include ("classes/q3rcon.php");
+		
 		$r = new q3rcon("$serverip", "$serverport", "$serverrcon");
 		if ($serverver == "ioq3 1.36") {
 			$r->send_command("banaddr $ip/24");

@@ -5,7 +5,7 @@ function recentbans() {
 	echo "<table class='utilcontainer4'><tr><td>Player</td><td>&nbsp;&nbsp;</td><td>IP</td><td>&nbsp;&nbsp;</td><td>Admin</td><td>&nbsp;&nbsp;</td><td width='50'>Reason</td><td>&nbsp;&nbsp;</td><td>Ban Length</td><td>&nbsp;&nbsp;</td><td>Ban Date</td><td>&nbsp;&nbsp;</td><td>Unban Date</td></tr><tr><td colspan='14' bgcolor='white' height='1'></td></tr>";
 	$link = mysql_connect($db_host,$db_user,$db_pass) or die('Unable to establish a DB connection');
 	mysql_select_db($db_database,$link);
-	$sql = "SELECT * FROM `bans` WHERE `Status` = \"Active\" ORDER BY `bans`.`banid` DESC LIMIT 0, 15 ";
+	$sql = "SELECT * FROM `bans` WHERE `".$db_prefix."_status` = \"Active\" ORDER BY `bans`.`banid` DESC LIMIT 0, 15 ";
 	$result = mysql_query($sql);
 	if (!$result) {
 		echo "Database has 0 bans or no bans are active<br>";

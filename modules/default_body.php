@@ -6,7 +6,7 @@ function default_body()
 	include "classes/config_inc.php";
 	mysql_connect("$db_host", "$db_user", "$db_pass") or die(mysql_error());
   	mysql_select_db("$db_database") or die(mysql_error());
-	$sql="SELECT * FROM ".$db_prefix."_Servers where `status`='Online' order by `order` ASC";
+	$sql="SELECT * FROM ".$db_prefix."_servers where `status`='Online' order by `order` ASC";
 	$result =mysql_query($sql);
 	while ($data=mysql_fetch_assoc($result)){
 		$svname = $data['name'];

@@ -10,7 +10,7 @@ $header1 = "<strong>Welcome to the New Server Administrator Site!</strong>"; //h
 $subhead = "This is under construction still!"; //sub header
 $header2 = "<strong>Welcome to the New Server Administrator Site!</strong>";
 $subhead2 = "This is under construction still!";
-$title = "|ALPHA| Administrators Site";
+$title = "Administrators Site";
 //content output, boddy2 is used for when the user isnt logged in
 $body = "<strong>This is the body of the site!</strong>"; //body
 

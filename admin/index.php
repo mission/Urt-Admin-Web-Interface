@@ -1,6 +1,6 @@
 <?php
 define('INCLUDE_CHECK',true);
-/*install database*/
+/*Add User to the database*/
 $usrname = $_REQUEST['usr'];
 $password = $_REQUEST['pass'];
 $regip = $_REQUEST['ip'];
@@ -12,7 +12,7 @@ echo "<html xmlns=\"http://www.w3.org/1999/xhtml\">
 <meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />
 </head>";
 echo "<body><div align='center'>";
-echo "<form action='installdb.php' method='post'>";
+echo "<form action='' method='post'>";
 echo "<table><tr><td colspan='2'><font size='14'><strong>Admin Account</strong></font></td></tr>";
 echo "<tr><td>Username:</td><td><input type='text' name='usr'></td></tr>";
 echo "<tr><td>Password:</td><td><input type='password' name='pass'></td></tr>";
@@ -27,7 +27,7 @@ if ($usrname != '') {
 include("../classes/config_inc.php");
 $link = mysql_connect("$db_host", "$db_user", "$db_pass") or die(mysql_error());
 mysql_select_db($db_database, $link);
-$sql = "INSERT INTO ".$db_prefix."_Users(usr,pass,email,regIP,fullname) values('".$usrname."', '".md5($password)."', '".$usremail."', '".$regip."', '".$usrfullname."');";
+$sql = "INSERT INTO ".$db_prefix."_users(usr,pass,email,regIP,fullname) values('".$usrname."', '".md5($password)."', '".$usremail."', '".$regip."', '".$usrfullname."');";
 mysql_query($sql) or $dbusracc = "0";
 if ($dbusracc == "0") {
 	$dbusracc = "<font color='red'><strong>Failed: ".mysql_error()."</strong></font>";

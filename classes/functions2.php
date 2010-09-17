@@ -54,7 +54,7 @@ function getsinfo($server)
 include("classes/config_inc.php");
 $link = mysql_connect($db_host,$db_user,$db_pass) or die('Unable to establish a DB connection');
 mysql_select_db($db_database,$link) or die("Unable to select ".$db_database." database");
-$row = mysql_fetch_assoc(mysql_query("SELECT * FROM ".$db_prefix."_Servers WHERE name=\"".$server."\""));
+$row = mysql_fetch_assoc(mysql_query("SELECT * FROM ".$db_prefix."_servers WHERE name=\"".$server."\""));
 $sip = $row['ip'];
 $sport = $row['port'];
 $srcon = $row['rconpass'];

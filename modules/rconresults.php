@@ -7,7 +7,7 @@ function rconresults() {
 	$server3 = addslashes($server3);
 	mysql_connect("$db_host", "$db_user", "$db_pass") or die(mysql_error());
 	mysql_select_db("$db_database") or die(mysql_error());
-	$result = mysql_query("select * from ".$db_prefix."_Servers where `id`='$server3'");
+	$result = mysql_query("select * from ".$db_prefix."_servers where `id`='$server3'");
 	if (!$result) {
 		die("No Server Available with id $server3");
 	}

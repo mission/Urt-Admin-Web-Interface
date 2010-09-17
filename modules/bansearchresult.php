@@ -29,11 +29,12 @@ function bansearchresult() {
 				}
 				echo "<div class='utilcontainer3'>Search Results:";
 				sleep(1);
+				define("INCLUDE_CHECK", true);
 				include "../classes/config_inc.php";
 				mysql_connect("$db_host", "$db_user", "$db_pass") or die(mysql_error());
 				mysql_select_db("$db_database") or die(mysql_error());
 				$sql3 = "SELECT *
-				FROM `bans`
+				FROM `".$db_prefix."_bans`
 				WHERE $field LIKE CONVERT( _utf8 '%$sparm%'
 				USING latin1 )
 				COLLATE latin1_swedish_ci";

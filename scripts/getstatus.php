@@ -4,7 +4,7 @@ include "../classes/config_inc.php";
 include "../classes/q3status.php";
 $link1 = mysql_connect("$db_host", "$db_user", "$db_pass") or die(mysql_error());
 mysql_select_db("$db_database", $link1) or die(mysql_error());
-$sql11="SELECT * FROM `".$db_prefix."_Servers` where `status`='Online' order by `order` ASC";
+$sql11="SELECT * FROM `".$db_prefix."_servers` where `status`='Online' order by `order` ASC";
 $result11 = mysql_query($sql11);
 $date = date('h:i:s a');
 while ($row1=mysql_fetch_assoc($result11)){

@@ -22,10 +22,10 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `urtadmin_bans`
+-- Table structure for table `urtAdmin_bans`
 --
 
-CREATE TABLE IF NOT EXISTS `urtadmin_bans` (
+CREATE TABLE IF NOT EXISTS `urtAdmin_bans` (
   `banid` int(10) NOT NULL AUTO_INCREMENT,
   `player` varchar(100) NOT NULL,
   `ip` varchar(100) NOT NULL,
@@ -39,17 +39,17 @@ CREATE TABLE IF NOT EXISTS `urtadmin_bans` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
--- Dumping data for table `urtadmin_bans`
+-- Dumping data for table `urtAdmin_bans`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `urtadmin_mainmenu`
+-- Table structure for table `urtAdmin_mainmenu`
 --
 
-CREATE TABLE IF NOT EXISTS `urtadmin_mainmenu` (
+CREATE TABLE IF NOT EXISTS `urtAdmin_mainmenu` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
   `href` varchar(100) NOT NULL,
@@ -58,10 +58,10 @@ CREATE TABLE IF NOT EXISTS `urtadmin_mainmenu` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
--- Dumping data for table `urtadmin_mainmenu`
+-- Dumping data for table `urtAdmin_mainmenu`
 --
 
-INSERT INTO `urtadmin_mainmenu` (`id`, `name`, `href`, `type`) VALUES
+INSERT INTO `urtAdmin_mainmenu` (`id`, `name`, `href`, `type`) VALUES
 (1, 'Home', 'index.php', 'mainmenu'),
 (2, 'Rcon Command', 'javascript:popUp1("modules/rcon.php")', 'mainmenu'),
 (3, 'Player Search', 'javascript:popUp("modules/search.php")', 'mainmenu'),
@@ -70,10 +70,10 @@ INSERT INTO `urtadmin_mainmenu` (`id`, `name`, `href`, `type`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `urtadmin_modules`
+-- Table structure for table `urtAdmin_modules`
 --
 
-CREATE TABLE IF NOT EXISTS `urtadmin_modules` (
+CREATE TABLE IF NOT EXISTS `urtAdmin_modules` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `order` int(100) NOT NULL,
   `file` varchar(100) NOT NULL,
@@ -88,10 +88,10 @@ CREATE TABLE IF NOT EXISTS `urtadmin_modules` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
 
 --
--- Dumping data for table `urtadmin_modules`
+-- Dumping data for table `urtAdmin_modules`
 --
 
-INSERT INTO `urtadmin_modules` (`id`, `order`, `file`, `requiredarg1`, `requiredarg2`, `requiredarg3`, `name`, `pos`, `class`, `status`) VALUES
+INSERT INTO `urtAdmin_modules` (`id`, `order`, `file`, `requiredarg1`, `requiredarg2`, `requiredarg3`, `name`, `pos`, `class`, `status`) VALUES
 (1, 0, 'mainmenu.php', '', '', '', 'Main Menu', 'left', 'utilcontainer6', 'enabled'),
 (2, 1, 'servermenu.php', '', '', '', 'Server Menu', 'left', 'utilcontainer6', 'enabled'),
 (3, 0, 'playerinfo.php', '', '', '', 'Player Info', 'body', '', 'enabled'),
@@ -104,10 +104,10 @@ INSERT INTO `urtadmin_modules` (`id`, `order`, `file`, `requiredarg1`, `required
 -- --------------------------------------------------------
 
 --
--- Table structure for table `urtadmin_players`
+-- Table structure for table `urtAdmin_players`
 --
 
-CREATE TABLE IF NOT EXISTS `urtadmin_players` (
+CREATE TABLE IF NOT EXISTS `urtAdmin_players` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
   `ip` varchar(15) NOT NULL,
@@ -119,7 +119,7 @@ CREATE TABLE IF NOT EXISTS `urtadmin_players` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
--- Dumping data for table `urtadmin_players`
+-- Dumping data for table `urtAdmin_players`
 --
 
 
@@ -129,7 +129,7 @@ CREATE TABLE IF NOT EXISTS `urtadmin_players` (
 -- Table structure for table `urtadmin_servers`
 --
 
-CREATE TABLE IF NOT EXISTS `urtadmin_servers` (
+CREATE TABLE IF NOT EXISTS `urtAdmin_servers` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `order` varchar(100) NOT NULL,
   `name` varchar(100) NOT NULL,
@@ -145,7 +145,7 @@ CREATE TABLE IF NOT EXISTS `urtadmin_servers` (
 -- Dumping data for table `urtadmin_servers`
 --
 
-INSERT INTO `urtadmin_servers` (`id`, `order`, `name`, `ip`, `port`, `version`, `rconpass`, `Status`) VALUES
+INSERT INTO `urtAdmin_servers` (`id`, `order`, `name`, `ip`, `port`, `version`, `rconpass`, `Status`) VALUES
 (1, '0', 'example', 'example.com', '27960', 'ioq3 1.35', 'example', 'Online');
 
 -- --------------------------------------------------------
@@ -154,7 +154,7 @@ INSERT INTO `urtadmin_servers` (`id`, `order`, `name`, `ip`, `port`, `version`, 
 -- Table structure for table `urtadmin_users`
 --
 
-CREATE TABLE IF NOT EXISTS `urtadmin_users` (
+CREATE TABLE IF NOT EXISTS `urtAdmin_users` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `usr` varchar(32) NOT NULL,
   `pass` varchar(32) NOT NULL,
