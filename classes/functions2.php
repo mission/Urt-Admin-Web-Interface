@@ -26,9 +26,8 @@ while ($data=mysql_fetch_assoc($result))
 	$logcheck = $_SESSION['id'];
 	if ($logcheck != "") {
 		echo "<div class='$container'>";
-		if ((include_once $path) != 'OK') {
-			echo $out($arg1, $arg2, $arg3);
-		}
+		include_once($path);
+		echo $out($arg1, $arg2, $arg3);
 		echo "</div>";
 		
 		
