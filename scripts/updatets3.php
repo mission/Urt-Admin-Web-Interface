@@ -1,4 +1,5 @@
 <?php
+define("INCLUDE_CHECK", true);
 require_once("../modules/tsstatus/tsstatus.php");
 include "../classes/config_inc.php";
 $date = date('h:i:s a');
