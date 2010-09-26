@@ -29,12 +29,12 @@ function rconresults() {
 		$r->send_command("$rconc");
 	}
 	$out = $r->get_response();
-	if ($out == '') {
-		$result = "Command Sent!";
-	}
+
 	$out2 = explode("\n", $out);
 	echo "<div class='utilcontainer5'>";
-	echo $result;
+	if ($out == '') {
+		echo "Command Sent!";
+	}
 	foreach($out2 as $line) {
 		if ($line != '') {
 			echo "".strip_gtlt(strip_colors($line))."<br>";

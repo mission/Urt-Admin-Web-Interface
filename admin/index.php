@@ -1,43 +1,146 @@
 <?php
-define('INCLUDE_CHECK',true);
-/*Add User to the database*/
-$usrname = $_REQUEST['usr'];
-$password = $_REQUEST['pass'];
-$regip = $_REQUEST['ip'];
-$usremail = $_REQUEST['email'];
-$usrfullname = $_REQUEST['full'];
-
-echo "<html xmlns=\"http://www.w3.org/1999/xhtml\">
-<head>
-<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />
-</head>";
-echo "<body><div align='center'>";
-echo "<form action='' method='post'>";
-echo "<table><tr><td colspan='2'><font size='14'><strong>Admin Account</strong></font></td></tr>";
-echo "<tr><td>Username:</td><td><input type='text' name='usr'></td></tr>";
-echo "<tr><td>Password:</td><td><input type='password' name='pass'></td></tr>";
-echo "<tr><td>Email:</td><td><input type='text' name='email'></td></tr>";
-echo "<tr><td>Fullname:</td><td><input type='text' name='full'></td></tr>";
-echo "<tr><td>regIP:</td><td><input type='text' name='ip'></td></tr>";
-echo "<tr><td colspan='2'><input type='submit' name='saveusr' value='submit'></td></tr>";
-echo "</table></form><br><font color='red'><strong>Note: regIP should be the ip of the Admin user, this will be used when ipcheck is turned on, if the persons ip doesnt match the ip on there account they will not beable to access the site for security reasons!</strong></font>";
-
-echo "<br>";
-if ($usrname != '') {
+define("INCLUDE_CHECK", true);
 include("../classes/config_inc.php");
-$link = mysql_connect("$db_host", "$db_user", "$db_pass") or die(mysql_error());
-mysql_select_db($db_database, $link);
-$sql = "INSERT INTO ".$db_prefix."_users(usr,pass,email,regIP,fullname) values('".$usrname."', '".md5($password)."', '".$usremail."', '".$regip."', '".$usrfullname."');";
-mysql_query($sql) or $dbusracc = "0";
-if ($dbusracc == "0") {
-	$dbusracc = "<font color='red'><strong>Failed: ".mysql_error()."</strong></font>";
-} else {
-	$dbusracc = "<font color='green'><strong>Success</strong></font>";
+include("classes/ipcheck.php");
+include("classes/usrmgr.php");
+include("classes/srvmgr.php");
+$userIP = $_SERVER['REMOTE_ADDR'];
+$act = $_POST['action'];
+$id = $_POST['entID'];
+if ($ipcheckon == "on") {
+$c = new ipcheck;
+$c->checkip($userIP);
 }
-echo "<body><table><tr><td>Job:</td><td>Status</td></tr>";
-echo "<tr><td>Create Admin Account:</td><td>".$dbusracc."<td></tr>";
-echo "</table><br><br>";
+
+// Those two files can be included only if INCLUDE_CHECK is defined
+
+
+session_name('adminLogin');
+// Starting the session
+
+session_set_cookie_params(2*7*24*60*60);
+// Making the cookie live for 2 weeks
+
+session_start();
+
+if($_SESSION['id'] && !isset($_COOKIE['urtAdmin_Remember']) && !$_SESSION['remember_Me'])
+{
+	// If you are logged in, but you don't have the tzRemember cookie (browser restart)
+	// and you have not checked the rememberMe checkbox:
+
+	$_SESSION = array();
+	session_destroy();
+	
+	// Destroy the session
 }
-echo "<br><br>Your IP: ".$_SERVER['REMOTE_ADDR']."</div></body></html>";
+
+if(isset($_GET['logoff']))
+{
+	$_SESSION = array();
+	session_destroy();
+	
+	header("Location: index.php");
+	exit;
+}
+
+if($_POST['submit']=='Login')
+{
+	// Checking whether the Login form has been submitted
+	
+	$err = array();
+	// Will hold our errors
+	
+	
+	if(!$_POST['username'] || !$_POST['password'])
+		$err[] = 'All the fields must be filled in!';
+	
+	if(!count($err))
+	{
+		$_POST['username'] = mysql_real_escape_string($_POST['username']);
+		$_POST['password'] = mysql_real_escape_string($_POST['password']);
+		$_POST['rememberMe'] = (int)$_POST['rememberMe'];
+		
+		// Escaping all input data
+
+		$row = mysql_fetch_assoc(mysql_query("SELECT id,usr,admin,fullname,theme FROM ".$db_table." WHERE usr='{$_POST['username']}' AND pass='".md5($_POST['password'])."'"));
+
+		if($row['usr'])
+		{
+			// If everything is OK login
+			
+			$_SESSION['usr']=$row['usr'];
+			$_SESSION['id'] = $row['id'];
+			$_SESSION['admin'] = $row['admin'];
+			$_SESSION['userName'] = $row['usr'];
+			$_SESSION['password'] = $row['password'];
+			$_SESSION['userFull'] = $row['fullname'];
+			$_SESSION['userIP'] = $row['ipaddress'];
+			$_SESSION['userRole'] = $row['userRole'];
+			$_SESSION['remember_Me'] = $_POST['remember_Me'];
+			$_SESSION['timeout'] = time();
+			$_SESSION['theme'] = $row['theme'];
+			$oneyear = 60 * 60 * 24 * 365 + time(); 
+			setcookie('currenttheme', $_SESSION['theme'], $oneyear); 
+			// Store some data in the session
+			
+			setcookie('urtAdmin_Remember',$_POST['remember_Me']);
+		}
+		else $err[]='Wrong username and/or password!';
+	}
+	
+	if($err)
+	$_SESSION['msg']['login-err'] = implode('<br />',$err);
+	// Save the error messages in the session
+
+	header("Location: index.php");
+	exit;
+}
+
 
 ?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title><?php echo $title;?></title>
+<!--[if !IE 6]><!--><link rel="stylesheet" type="text/css" href="admin.css" /><!--<![endif]-->
+</head>
+<body>
+<?php
+if (!$_SESSION['id']) {
+	echo "<div align='center' valign='center'>";
+	echo '<form class="clearfix" action="" method="post">';
+		echo '<h1>Administrator Login</h1>';
+			
+		if($_SESSION['msg']['login-err'])
+		{
+			echo '<div class="err">'.$_SESSION['msg']['login-err'].'</div>';
+			unset($_SESSION['msg']['login-err']);
+		}
+		echo '<table class="srvcontainer"><tr><td>';
+		echo '<label class="grey" for="username">Username:</label></td><td>';
+		echo '<input class="field" type="text" name="username" id="username" value="" size="23" /></td></tr><tr><td>';
+		echo '<label class="grey" for="password">Password:</label></td><td>';
+		echo '<input class="field" type="password" name="password" id="password" size="23" /></td></tr><tr><td>';
+		echo '<label>Remember me</label></td><td><input name="remember_Me" id="remember_Me" type="checkbox" checked="checked" value="1" /></td></tr><tr><td colspan="2">';
+		echo '<input type="submit" name="submit" value="Login" class="bt_login" /></td></tr>';
+		echo '</table>';
+	echo '</form>';
+	echo "</div>";
+} else {
+echo "<div align='center'>";
+echo "<table class='srvcontainer'><tr><td><div align='center'>";
+echo "<table>";
+echo "<tr><td><form action='' method='post'><button type='submit' name='action' value='usrmgr'>User Manager</button></td><td><button type='submit' name='action' value='srvmgr'>Server Manager</button></td><td></td><td></form></td></tr>";
+echo "</table><br><br><br>";
+
+if ($act != '') {
+	echo $act($id);
+}
+echo "<br><br><br><br><a href='?logoff'>Logout</a></div></td></tr></table></div>";
+}
+?>
+</body>
+</html>

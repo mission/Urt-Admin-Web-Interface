@@ -2,8 +2,6 @@
 function servermenu()
 {
 include("classes/config_inc.php");
-$check = getadmin($_SESSION['usr']);
-if ($check) {
 $count = "0";
 $link = mysql_connect($db_host,$db_user,$db_pass) or die('Unable to establish a DB connection');
 mysql_select_db($db_database,$link) or die("Unable to select $db_database database");
@@ -42,5 +40,4 @@ echo $div;
 echo "</div>";
 //echo "</select></form></div>";
 mysql_close($link);
-}
 }
