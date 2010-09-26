@@ -7,9 +7,17 @@ include("classes/srvmgr.php");
 $userIP = $_SERVER['REMOTE_ADDR'];
 $act = $_POST['action'];
 $id = $_POST['entID'];
-if ($ipcheckon == "on") {
-$c = new ipcheck;
-$c->checkip($userIP);
+
+$link = mysql_connect($db_host,$db_user,$db_pass) or die('Unable to establish a DB connection');
+mysql_select_db($db_database, $link);
+$result = mysql_query("select * from `".$db_prefix."_users`");
+if (mysql_num_rows($result) > 0) {
+	if ($ipcheckon == "on") {
+		$c = new ipcheck;
+		$c->checkip($userIP);
+	}
+} else {
+$_SESSION['id'] = true;
 }
 
 // Those two files can be included only if INCLUDE_CHECK is defined
@@ -139,7 +147,7 @@ echo "</table><br><br><br>";
 if ($act != '') {
 	echo $act($id);
 }
-echo "<br><br><br><br><a href='?logoff'>Logout</a></div></td></tr></table></div>";
+echo "<br><br><br><br><a href='?logoff'>Logout</a><br><br>Your IP: {$_SERVER['REMOTE_ADDR']}</div></td></tr></table></div>";
 }
 ?>
 </body>
