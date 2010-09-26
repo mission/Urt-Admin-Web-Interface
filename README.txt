@@ -29,7 +29,8 @@ Warning: this requires a mysql database
 1. put the content of this zip file in a folder on your webserver
 2. create a database, edit config_inc.php to your desired settings
 3. import the urtadmin.sql file thats located in the sql folder into your mysql database
-4. open ur browser to the admin directory and use the form to add admin accounts
+4. open ur browser to the admin/add.php and use the form to add the first admin account, delete/rename add.php, then just use <site>/admin/ to add/edit/delete users using the User Manager.
+5. in the backend interface click server manager, and add/edit/delete your server from there.
 5. add a cron job that loads classes/getPlayers.php every x minutes, this script cycles through the servers entered in the 
 database and gets the current players, then adds them to the database
 DONE! :)
