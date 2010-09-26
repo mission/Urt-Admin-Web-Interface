@@ -8,17 +8,14 @@ $userIP = $_SERVER['REMOTE_ADDR'];
 $act = $_POST['action'];
 $id = $_POST['entID'];
 
-$link = mysql_connect($db_host,$db_user,$db_pass) or die('Unable to establish a DB connection');
-mysql_select_db($db_database, $link);
-$result = mysql_query("select * from `".$db_prefix."_users`");
-if (mysql_num_rows($result) > 0) {
-	if ($ipcheckon == "on") {
-		$c = new ipcheck;
-		$c->checkip($userIP);
-	}
-} else {
-$_SESSION['id'] = true;
+if ($ipcheckon == "on") {
+	$c = new ipcheck;
+	$c->checkip($userIP);
 }
+if (file_exists("add.php")) {
+	die("add.php exists, you cannot access this site when this file exists, please create your user then delete/rename this file!");
+}
+
 
 // Those two files can be included only if INCLUDE_CHECK is defined
 
