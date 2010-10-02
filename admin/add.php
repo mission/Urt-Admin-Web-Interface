@@ -20,7 +20,7 @@ echo "<tr><td>Email:</td><td><input type='text' name='email'></td></tr>";
 echo "<tr><td>Fullname:</td><td><input type='text' name='full'></td></tr>";
 echo "<tr><td>regIP:</td><td><input type='text' name='ip'></td></tr>";
 echo "<tr><td colspan='2'><input type='submit' name='saveusr' value='submit'></td></tr>";
-echo "</table></form><br><font color='red'><strong>Note: regIP should be the ip of the Admin user, this will be used when ipcheck is turned on, if the persons ip doesnt match the ip on there account they will not beable to access the site for security reasons!</strong></font>";
+echo "</table></form><br><font color='red'><strong>Note: regIP should be the ip of the Admin user, this will be used when ipcheck is turned on, if the persons ip doesnt match the ip on there account they will not beable to access the site for security reasons! Also, when u create a user with this form, they will automatically be give backend access.</strong></font>";
 
 echo "<br>";
 if ($usrname != '') {
