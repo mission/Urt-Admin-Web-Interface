@@ -27,11 +27,11 @@ $result5 = $s->update_status(); // Get the status from the server so we can go t
 $nump = $s->get_num_players();
 //$nump =($nump-1);
 if ($nump == "0") {
-echo "<div class='utilcontainer'>";
+echo "<div class='container4'>";
 echo "<h2>" . $sname . " is currently Empty</h2>";
 echo "</div>";
 } elseif ($nump == "-1") {
-echo "<div class='utilcontainer'>";
+echo "<div class='container4'>";
 echo "<h2>" . $sname . " is currently <font color='red'>offline</font></h2>";
 echo "</div>";
 } else {
@@ -40,7 +40,7 @@ $r = new q3rcon("$sip", "$sport", "$srcon");
 $maxcl = $s->cvarlist['sv_maxclients'];
 $prcl = $s->cvarlist['sv_privateclients'];
 $max = ($maxcl-$prcl);
-echo "<table class='utilcontainer'><tr><td><table>";
+echo "<table class='container4'><tr><td><table>";
 echo "<tr><td colspan='7'><div align='center'>$sname  &nbsp;&nbsp;Players: $nump/$max</div></td></tr>";
 echo "<tr>
 <th>Slot#</th><th>&nbsp;&nbsp;</th><th>Name</th><th>&nbsp;&nbsp;</th><th>IP:</th><th>&nbsp;&nbsp;</th><th>GUID:</th><th>&nbsp;&nbsp;</th><th>Action</th></tr>";
@@ -61,7 +61,7 @@ if (strpos($ver, $alpha) !== false) {
 		echo "<tr>";
 		echo "<td><font size='1'>$slotnum</font></td><td>&nbsp;&nbsp;</td><td><font size='1'>".strip_gtlt(strip_colors($name2))."</font></td><td>&nbsp;&nbsp;</td><td><font size='1'>$ip</font></td><td>&nbsp;&nbsp;</td><td><font size='1'>$guid</font></td><td>&nbsp;&nbsp;</td><td><form action='' method='post'><select name='do'><option selected=select>Select</option><option value='kick'>Kick</option><option value='slap1'>Slap(1)</option>";
 		echo "<option value='runban'>Ban</option>";
-		echo "</select><input type='hidden' name='svip' value='$sip' /><input type='hidden' name='svport' value='$sport' /> <input type='hidden' name='svrcon' value='$srcon' /><input type='hidden' name='plname' value='".strip_gtlt(strip_colors($name2))."' /><input type='hidden' name='plip' value='$ip' /><input type='hidden' name='plslot' value='$slotnum' /><input type='hidden' name='svid' value='$q' /><input type='submit' value='Execute' /></form></td>";
+		echo "</select><input type='hidden' name='svip' value='$sip' /><input type='hidden' name='svport' value='$sport' /> <input type='hidden' name='svrcon' value='$srcon' /><input type='hidden' name='plname' value='".strip_gtlt(strip_colors($name2))."' /><input type='hidden' name='plip' value='$ip' /><input type='hidden' name='plslot' value='$slotnum' /><input type='hidden' name='svid' value='$q' /><input type='submit' class='nav' value='Execute' /></form></td>";
 		echo "</tr>";
 		}
 
@@ -77,7 +77,7 @@ if (strpos($ver, $alpha) !== false) {
 		list($ip) = explode(":", $player['address'], 2);
 		echo "<td><font size='1'>$slotnum</font></td><td>&nbsp;&nbsp;</td><td><font size='1'>".strip_gtlt(strip_colors($name2))."</font></td><td>&nbsp;&nbsp;</td><td><font size='1'>$ip</font></td><td>&nbsp;&nbsp;</td><td><font size='1'>$plguid</font></td><td>&nbsp;&nbsp;</td><td><form action='' method='post'><select name='do'><option selected=select>Select</option><option value='kick'>Kick</option><option value='slap1'>Slap(1)</option>";
 		echo "<option value='runban'>Ban</option>";
-		echo "<option value='namesearch'>Search PlayerName</option><option value='ipsearch'>Search IP</option></select><input type='hidden' name='svip' value='$sip' /><input type='hidden' name='svport' value='$sport' /> <input type='hidden' name='svrcon' value='$srcon' /><input type='hidden' name='plname' value=\"".strip_gtlt(strip_colors($name2))."\" /><input type='hidden' name='plip' value='$ip' /><input type='hidden' name='plslot' value='$slotnum' /><input type='hidden' name='svid' value='$q' /><input type='submit' value='Execute' /></form></td>";
+		echo "<option value='namesearch'>Search PlayerName</option><option value='ipsearch'>Search IP</option></select><input type='hidden' name='svip' value='$sip' /><input type='hidden' name='svport' value='$sport' /> <input type='hidden' name='svrcon' value='$srcon' /><input type='hidden' name='plname' value=\"".strip_gtlt(strip_colors($name2))."\" /><input type='hidden' name='plip' value='$ip' /><input type='hidden' name='plslot' value='$slotnum' /><input type='hidden' name='svid' value='$q' /><input type='submit' class='nav' value='Execute' /></form></td>";
 		echo "</tr>";
 	}
 }

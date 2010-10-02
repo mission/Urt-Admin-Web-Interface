@@ -4,7 +4,7 @@
 if (!isset($_SESSION["theme"])) {
 echo '<!--[if !IE 6]><!--><link rel="stylesheet" type="text/css" href="templates/default/style.css" /><!--<![endif]-->';
 } else {
-echo '<!--[if !IE 6]><!--><link rel="stylesheet" type="text/css" href="'.$_SESSION["theme"].'" /><!--<![endif]-->';
+echo "<!--[if !IE 6]><!--><link rel=\"stylesheet\" type=\"text/css\" href=\"templates/{$_SESSION["theme"]}/style.css\" /><!--<![endif]-->";
 }?>
 <script type="text/javascript" src="modules/tsstatus/tsstatus.js"></script>
 <script src="classes/doaction.js" type="text/javascript"></script>

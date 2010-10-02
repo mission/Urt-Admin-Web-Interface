@@ -4,6 +4,9 @@ include("../classes/config_inc.php");
 include("classes/ipcheck.php");
 include("classes/usrmgr.php");
 include("classes/srvmgr.php");
+include("classes/modmgr.php");
+include("classes/menumgr.php");
+include("classes/stylemgr.php");
 $userIP = $_SERVER['REMOTE_ADDR'];
 $act = $_POST['action'];
 $id = $_POST['entID'];
@@ -124,21 +127,21 @@ if (!$_SESSION['id']) {
 			echo '<div class="err">'.$_SESSION['msg']['login-err'].'</div>';
 			unset($_SESSION['msg']['login-err']);
 		}
-		echo '<table class="srvcontainer"><tr><td>';
+		echo '<table class="container3"><tr><td>';
 		echo '<label class="grey" for="username">Username:</label></td><td>';
 		echo '<input class="field" type="text" name="username" id="username" value="" size="23" /></td></tr><tr><td>';
 		echo '<label class="grey" for="password">Password:</label></td><td>';
 		echo '<input class="field" type="password" name="password" id="password" size="23" /></td></tr><tr><td>';
 		echo '<label>Remember me</label></td><td><input name="remember_Me" id="remember_Me" type="checkbox" checked="checked" value="1" /></td></tr><tr><td colspan="2">';
-		echo '<input type="submit" name="submit" value="Login" class="bt_login" /></td></tr>';
+		echo '<input type="submit" name="submit" value="Login" class="nav" /></td></tr>';
 		echo '</table>';
 	echo '</form>';
 	echo "</div>";
 } else {
 echo "<div align='center'>";
-echo "<table class='srvcontainer'><tr><td><div align='center'>";
+echo "<table class='container3'><tr><td><div align='center'>";
 echo "<table>";
-echo "<tr><td><form action='' method='post'><button type='submit' name='action' value='usrmgr'>User Manager</button></td><td><button type='submit' name='action' value='srvmgr'>Server Manager</button></td><td></td><td></form></td></tr>";
+echo "<tr><td><a href='../'><button class='nav'>Home</button></a></td><td><form action='' method='post'><button type='submit' class='nav' name='action' value='usrmgr'>User Manager</button></td><td><button type='submit' name='action' class='nav' value='srvmgr'>Server Manager</button></td><td><button type='submit' class='nav' name='action' value='modmgr'>Module Manager</button></td><td><button type='submit' class='nav' name='action' value='menumgr'>Menu Manager</button></td><td><button type='submit' class='nav' name='action' value='stylemgr'>Style Manager</button></form></td></tr>";
 echo "</table><br><br><br>";
 
 if ($act != '') {

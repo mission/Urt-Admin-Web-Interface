@@ -251,7 +251,7 @@ if($_SESSION['msg'])
 		echo "</td><td valign='top'>
 			  <div class='container2'>
 			  <br><br></div>
-			  <div class='utilcontainer6'>
+			  <div class='container3'>
 				<h1>".$header1."</h1>
 				<h2>".$subhead."</h2>
 				</div>";
@@ -269,7 +269,11 @@ if($_SESSION['msg'])
 				
 		//footer
 		echo getmod(footer);
-		echo "</td></table>";
+		
+		echo "</td></tr></table>";
+		if($_SESSION['admin'] == 'Yes') {
+			echo "<br><br><div align='center'><a href='admin/'><button class='nav'>Admin Backend</button></a></div>";
+		}
 	} else {
 		echo "<div class='container'><div align='center'><h1>You need to login to view this site!<h1></div></div>";
 	}

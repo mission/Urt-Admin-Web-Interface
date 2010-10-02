@@ -83,14 +83,33 @@ h2{
 	-webkit-border-radius: 20px;
 	border-radius:20px;
 }
-.srvcontainer{
+
+.container3{
+	margin-top:20px;
+	background:#000000;
+	background-color: black;
+	background-repeat:repeat;
+	background-position:left;
+	border:1px solid #FF4E00;
+	padding:4px;
+	
+	/* Rounded corners */
+	-moz-border-radius:12px;
+	-khtml-border-radius: 12px;
+	-webkit-border-radius: 12px;
+	border-radius:12px;
+	color: white;
+}
+
+.container4{
 	margin-top:20px;
 	width: 220;
 	background:#000000;
 	/*background:url('images/contbg.png);*/
 	background-repeat:repeat;
 	background-position:center;
-	border:1px solid #FF4E00;
+	border:1px #FF4E00;
+	border-style: solid;
 	padding:10px;
 	
 	/* Rounded corners */
@@ -100,15 +119,17 @@ h2{
 	border-radius:20px;
 	color: white;
 }
-.utilcontainer{
+
+.container5{
 	margin-top:20px;
-	width: 100%;
+	width: 220;
 	background:#000000;
-	/*background:url(images/contbg.png);*/
+	/*background:url('images/contbg.png);*/
 	background-repeat:repeat;
 	background-position:center;
-	border:1px solid #FF4E00;
-	padding:15px;
+	border:2px #FF4E00;
+	border-style: dotted;
+	padding:10px;
 	
 	/* Rounded corners */
 	-moz-border-radius:20px;
@@ -117,16 +138,17 @@ h2{
 	border-radius:20px;
 	color: white;
 }
-.utilcontainer2{
+
+.container6{
 	margin-top:20px;
-	width:220px;
-	height: 180px;
+	width: 220;
 	background:#000000;
-	/*background:url(images/contbg.png);*/
+	/*background:url('images/contbg.png);*/
 	background-repeat:repeat;
 	background-position:center;
-	border:1px solid #FF4E00;
-	padding:15px;
+	border:2px #FF4E00;
+	border-style: dashed;
+	padding:10px;
 	
 	/* Rounded corners */
 	-moz-border-radius:20px;
@@ -135,71 +157,23 @@ h2{
 	border-radius:20px;
 	color: white;
 }
-.utilcontainer5{
-	margin-top:20px;
-	width:100%;
-	height: 100%;
-	background:#000000;
-	/*background:url(images/contbg.png);*/
-	background-repeat:repeat;
-	background-position:center;
-	border:1px solid #FF4E00;
-	padding:15px;
-	
-	/* Rounded corners */
-	-moz-border-radius:20px;
-	-khtml-border-radius: 20px;
-	-webkit-border-radius: 20px;
-	border-radius:20px;
-	color: white;
+
+.nav {
+background-color: #FF4E00;
+border: Defaultpx solid #ffffff;
+color: #ffffff;
+font-size: ;
+font-family: ;
+font-style: ;
+font-weight: bold;
+padding: 1px;
+/* Rounded corners */
+-moz-border-radius:8px;
+-khtml-border-radius: 8px;
+-webkit-border-radius: 8px;
+border-radius:8px;
 }
-.utilcontainer3{
-	margin-top:20px;
-	background:#000000;
-	/*background:url(images/contbg.png);*/
-	background-repeat:repeat;
-	background-position:left;
-	border:1px solid #FF4E00;
-	padding:15px;
-	
-	/* Rounded corners */
-	-moz-border-radius:20px;
-	-khtml-border-radius: 20px;
-	-webkit-border-radius: 20px;
-	border-radius:20px;
-	color: white;
-}
-.utilcontainer4{
-	background:#000000;
-	background-color: black;
-	background-repeat:repeat;
-	background-position:left;
-	border:1px solid #FF4E00;
-	padding:4px;
-	
-	/* Rounded corners */
-	-moz-border-radius:12px;
-	-khtml-border-radius: 12px;
-	-webkit-border-radius: 12px;
-	border-radius:12px;
-	color: white;
-}
-.utilcontainer6{
-	margin-top:20px;
-	background:#000000;
-	background-color: black;
-	background-repeat:repeat;
-	background-position:left;
-	border:1px solid #FF4E00;
-	padding:4px;
-	
-	/* Rounded corners */
-	-moz-border-radius:12px;
-	-khtml-border-radius: 12px;
-	-webkit-border-radius: 12px;
-	border-radius:12px;
-	color: white;
-}
+
 .err{
 	color:red;
 }

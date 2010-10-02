@@ -51,6 +51,7 @@ CREATE TABLE IF NOT EXISTS `urtAdmin_bans` (
 
 CREATE TABLE IF NOT EXISTS `urtAdmin_mainmenu` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
+  `order` int(10) NOT NULL DEFAULT '0',
   `name` varchar(100) NOT NULL,
   `href` varchar(100) NOT NULL,
   `type` varchar(100) NOT NULL,
@@ -61,11 +62,11 @@ CREATE TABLE IF NOT EXISTS `urtAdmin_mainmenu` (
 -- Dumping data for table `urtAdmin_mainmenu`
 --
 
-INSERT INTO `urtAdmin_mainmenu` (`id`, `name`, `href`, `type`) VALUES
-(1, 'Home', 'index.php', 'mainmenu'),
-(2, 'Rcon Command', 'javascript:popUp1("modules/rcon.php")', 'mainmenu'),
-(3, 'Player Search', 'javascript:popUp("modules/search.php")', 'mainmenu'),
-(4, 'Ban Search', 'javascript:popUp("modules/bansearch.php")', 'mainmenu');
+INSERT INTO `urtAdmin_mainmenu` (`id`, `order`, `name`, `href`, `type`) VALUES
+(1, '0', 'Home', 'index.php', 'mainmenu'),
+(2, '1', 'Rcon Command', 'javascript:popUp1("modules/rcon.php")', 'mainmenu'),
+(3, '2', 'Player Search', 'javascript:popUp("modules/search.php")', 'mainmenu'),
+(4, '3', 'Ban Search', 'javascript:popUp("modules/bansearch.php")', 'mainmenu');
 
 -- --------------------------------------------------------
 
@@ -160,12 +161,21 @@ CREATE TABLE IF NOT EXISTS `urtAdmin_users` (
   `pass` varchar(32) NOT NULL,
   `email` varchar(255) NOT NULL,
   `regIP` varchar(15) NOT NULL,
-  `dt` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `admin` varchar(3) NOT NULL DEFAULT 'Yes',
   `fullname` varchar(100) NOT NULL,
-  `theme` varchar(100) NOT NULL DEFAULT 'templates/default/style.css',
+  `theme` varchar(100) NOT NULL DEFAULT 'default',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+CREATE TABLE IF NOT EXISTS `urtAdmin_styles` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL,
+  `folder` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+INSERT INTO `urtAdmin_styles` (`id`, `name`, `folder`) VALUES
+(1, 'Default', 'default');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
