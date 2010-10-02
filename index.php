@@ -1,5 +1,16 @@
 <?php
+/*
+Urt Admin Web Interface
 
+Developed By: |ALPHA|mission
+Read the README.txt file for copyrite info
+
+Version: 1.0
+Version Date: Oct 1, 2010
+
+*/
+preg_match("/[^\.\/]+\.[^\.\/]+$/", $_SERVER['HTTP_HOST'], $matches);
+$domain = $matches[0];
 define('INCLUDE_CHECK',true);
 require("classes/ipcheck.php");
 require 'classes/functions.php';
@@ -274,7 +285,8 @@ if($_SESSION['msg'])
 		if($_SESSION['admin'] == 'Yes') {
 			echo "<br><br><div align='center'><a href='admin/'><button class='nav'>Admin Backend</button></a></div>";
 		}
-	} else {
+		echo "<br><br><div align='center'><font color='white'>{$domain}, Powered by UrtAdmin Web Interface v1.0</font></div>";
+		} else {
 		echo "<div class='container'><div align='center'><h1>You need to login to view this site!<h1></div></div>";
 	}
 	?>

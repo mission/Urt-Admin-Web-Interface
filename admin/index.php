@@ -10,7 +10,8 @@ include("classes/stylemgr.php");
 $userIP = $_SERVER['REMOTE_ADDR'];
 $act = $_POST['action'];
 $id = $_POST['entID'];
-
+preg_match("/[^\.\/]+\.[^\.\/]+$/", $_SERVER['HTTP_HOST'], $matches);
+$domain = $matches[0];
 if ($ipcheckon == "on") {
 	$c = new ipcheck;
 	$c->checkip($userIP);
@@ -149,6 +150,7 @@ if ($act != '') {
 }
 echo "<br><br><br><br><a href='?logoff'>Logout</a><br><br>Your IP: {$_SERVER['REMOTE_ADDR']}</div></td></tr></table></div>";
 }
+echo "<br><br><div align='center'><font color='white'>{$domain}, Powered by UrtAdmin Web Interface v1.0</font></div>";
 ?>
 </body>
 </html>
