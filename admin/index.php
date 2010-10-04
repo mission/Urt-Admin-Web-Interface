@@ -1,4 +1,15 @@
 <?php
+/*
+Urt Admin Web Interface
+
+Developed By: |ALPHA|mission
+Read the README.txt file for copyrite info
+
+Version: 1.1
+Version Date: Oct 4, 2010
+
+*/
+
 define("INCLUDE_CHECK", true);
 include("../classes/config_inc.php");
 include("classes/ipcheck.php");
@@ -7,12 +18,13 @@ include("classes/srvmgr.php");
 include("classes/modmgr.php");
 include("classes/menumgr.php");
 include("classes/stylemgr.php");
+include("classes/settingsmgr.php");
 $userIP = $_SERVER['REMOTE_ADDR'];
 $act = $_POST['action'];
 $id = $_POST['entID'];
 preg_match("/[^\.\/]+\.[^\.\/]+$/", $_SERVER['HTTP_HOST'], $matches);
 $domain = $matches[0];
-if ($ipcheckon == "on") {
+if ($CONFIG['ip_check'] == "On") {
 	$c = new ipcheck;
 	$c->checkip($userIP);
 }
@@ -113,7 +125,7 @@ if($_POST['submit']=='Login')
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title><?php echo $title;?></title>
+<title><?php echo $CONFIG['title'];?></title>
 <!--[if !IE 6]><!--><link rel="stylesheet" type="text/css" href="admin.css" /><!--<![endif]-->
 </head>
 <body>
@@ -142,7 +154,7 @@ if (!$_SESSION['id']) {
 echo "<div align='center'>";
 echo "<table class='container3'><tr><td><div align='center'>";
 echo "<table>";
-echo "<tr><td><a href='../'><button class='nav'>Home</button></a></td><td><form action='' method='post'><button type='submit' class='nav' name='action' value='usrmgr'>User Manager</button></td><td><button type='submit' name='action' class='nav' value='srvmgr'>Server Manager</button></td><td><button type='submit' class='nav' name='action' value='modmgr'>Module Manager</button></td><td><button type='submit' class='nav' name='action' value='menumgr'>Menu Manager</button></td><td><button type='submit' class='nav' name='action' value='stylemgr'>Style Manager</button></form></td></tr>";
+echo "<tr><td><a href='../'><button class='nav'>Home</button></a></td><td><form action='' method='post'><button type='submit' class='nav' name='action' value='usrmgr'>User Manager</button></td><td><button type='submit' name='action' class='nav' value='srvmgr'>Server Manager</button></td><td><button type='submit' class='nav' name='action' value='modmgr'>Module Manager</button></td><td><button type='submit' class='nav' name='action' value='menumgr'>Menu Manager</button></td><td><button type='submit' class='nav' name='action' value='stylemgr'>Style Manager</button></td><td><button type='submit' class='nav' name='action' value='settingsmgr'>Settings Manager</button></form></td></tr>";
 echo "</table><br><br><br>";
 
 if ($act != '') {
@@ -150,7 +162,7 @@ if ($act != '') {
 }
 echo "<br><br><br><br><a href='?logoff'>Logout</a><br><br>Your IP: {$_SERVER['REMOTE_ADDR']}</div></td></tr></table></div>";
 }
-echo "<br><br><div align='center'><font color='white'>{$domain}, Powered by UrtAdmin Web Interface v1.0</font></div>";
+echo "<br><br><div align='center'><font color='white'>{$domain}, Powered by UrtAdmin Web Interface v1.1</font></div>";
 ?>
 </body>
 </html>

@@ -158,6 +158,58 @@ h2{
 	color: white;
 }
 
+.container7{
+	background:#000000;
+	background-color: black;
+	background-repeat:repeat;
+	background-position:left;
+	border:1px solid #FF4E00;
+	padding:4px;
+	
+	/* Rounded corners */
+	-moz-border-radius:12px;
+	-khtml-border-radius: 12px;
+	-webkit-border-radius: 12px;
+	border-radius:12px;
+	color: white;
+}
+
+.container8 {
+	margin-top:20px;
+	width:220px;
+	height: 180px;
+	background:#000000;
+	/*background:url(images/contbg.png);*/
+	background-repeat:repeat;
+	background-position:center;
+	border:1px solid #FF4E00;
+	padding:15px;
+	
+	/* Rounded corners */
+	-moz-border-radius:20px;
+	-khtml-border-radius: 20px;
+	-webkit-border-radius: 20px;
+	border-radius:20px;
+	color: white;
+}
+
+.container9{
+	margin-top:20px;
+	background:#000000;
+	/*background:url(images/contbg.png);*/
+	background-repeat:repeat;
+	background-position:left;
+	border:1px solid #FF4E00;
+	padding:15px;
+	
+	/* Rounded corners */
+	-moz-border-radius:20px;
+	-khtml-border-radius: 20px;
+	-webkit-border-radius: 20px;
+	border-radius:20px;
+	color: white;
+}
+
 .nav {
 background-color: #FF4E00;
 border: Defaultpx solid #ffffff;

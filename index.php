@@ -5,8 +5,8 @@ Urt Admin Web Interface
 Developed By: |ALPHA|mission
 Read the README.txt file for copyrite info
 
-Version: 1.0
-Version Date: Oct 1, 2010
+Version: 1.1
+Version Date: Oct 4, 2010
 
 */
 preg_match("/[^\.\/]+\.[^\.\/]+$/", $_SERVER['HTTP_HOST'], $matches);
@@ -20,7 +20,7 @@ require 'classes/q3rcon.php';
 require 'classes/config_inc.php';
 $userIP = $_SERVER['REMOTE_ADDR'];
 
-if ($ipcheckon == "on") {
+if ($CONFIG['ip_check'] == "On") {
 $c = new ipcheck;
 $c->checkip($userIP);
 }
@@ -253,7 +253,7 @@ if($_SESSION['msg'])
 </div> <!--panel -->
 
 <div class="pageContent">
-	<div id="main">
+	<div id="main" align="center">
 	<?php
 	if ($_SESSION['id']) {
 		echo "<table><tr><td valign='top' width='15%'>";
@@ -263,8 +263,8 @@ if($_SESSION['msg'])
 			  <div class='container2'>
 			  <br><br></div>
 			  <div class='container3'>
-				<h1>".$header1."</h1>
-				<h2>".$subhead."</h2>
+				<h1>{$CONFIG['header']}</h1>
+				<h2>{$CONFIG['subheader']}</h2>
 				</div>";
 		//body content
 		echo getmod(body);
@@ -285,10 +285,10 @@ if($_SESSION['msg'])
 		if($_SESSION['admin'] == 'Yes') {
 			echo "<br><br><div align='center'><a href='admin/'><button class='nav'>Admin Backend</button></a></div>";
 		}
-		echo "<br><br><div align='center'><font color='white'>{$domain}, Powered by UrtAdmin Web Interface v1.0</font></div>";
-		} else {
+	} else {
 		echo "<div class='container'><div align='center'><h1>You need to login to view this site!<h1></div></div>";
 	}
+	echo "<br><br><div align='center'><font color='white'>{$domain}, Powered by UrtAdmin Web Interface v1.1</font></div>";
 	?>
 	</div>
 </div>

@@ -5,7 +5,7 @@ include_once('../classes/q3status.php');
 include "../classes/config_inc.php";
 mysql_connect("$db_host", "$db_user", "$db_pass") or die(mysql_error());
 mysql_select_db("$db_database") or die(mysql_error());
-$sql="SELECT * FROM ".$db_prefix."_servers where Status='Online'";
+$sql="SELECT * FROM {$db_prefix}_servers where Status='Online'";
 $result =mysql_query($sql);
 while ($data=mysql_fetch_assoc($result)) {
 	$svname = $data['name'];
@@ -37,7 +37,7 @@ while ($data=mysql_fetch_assoc($result)) {
 				list($ip) = explode(":", $player['address'], 2);
 				mysql_connect("$db_host", "$db_user", "$db_pass") or die(mysql_error());
 				mysql_select_db("$db_database") or die(mysql_error());
-				$runq = "SELECT * FROM `".$db_prefix."_players` WHERE `name` LIKE CONVERT(_utf8 \"$name\" USING latin1) COLLATE latin1_swedish_ci AND `ip` LIKE CONVERT(_utf8 \"$ip\" USING latin1) COLLATE latin1_swedish_ci AND `guid`='$guid'";
+				$runq = "SELECT * FROM `{$db_prefix}_players` WHERE `name` LIKE CONVERT(_utf8 \"{$name}\" USING latin1) COLLATE latin1_swedish_ci AND `ip` LIKE CONVERT(_utf8 \"{$ip}\" USING latin1) COLLATE latin1_swedish_ci AND `guid`='{$guid}'";
 				$runqresult = mysql_query($runq);
 				$count=mysql_num_rows($runqresult);
 				$data=mysql_fetch_assoc($runqresult);
@@ -50,8 +50,8 @@ while ($data=mysql_fetch_assoc($result)) {
 					echo "$name on $svname with $ip already in the database @ entry# $plid! Updating entry @ $date<br>";
 					mysql_connect("$db_host", "$db_user", "$db_pass") or die(mysql_error());
 					mysql_select_db("$db_database") or die(mysql_error());
-					$runq2 = "UPDATE ".$db_prefix."_players SET last = \"$date\", laston = \"$svname\"
-					WHERE id = '$plid' LIMIT 1";
+					$runq2 = "UPDATE {$db_prefix}_players SET last = \"{$date}\", laston = \"{$svname}\"
+					WHERE id = '{$plid}' LIMIT 1";
 					mysql_query($runq2);
 				} else {
 					//insert new data entry for player
@@ -60,8 +60,8 @@ while ($data=mysql_fetch_assoc($result)) {
 					$name = addslashes($name);
 					mysql_connect("$db_host", "$db_user", "$db_pass") or die(mysql_error());
 					mysql_select_db("$db_database") or die(mysql_error());
-					mysql_query("INSERT INTO `".$db_prefix."_players` VALUES ('NULL', \"$name\", '$ip', '$guid', '$date', '$date', '$svname')");
-					echo "$name on $svname with $ip and $guid inserted into database at $date<br>";
+					mysql_query("INSERT INTO `{$db_prefix}_players` VALUES ('NULL', \"{$name}\", '{$ip}', '{$guid}', '{$date}', '{$date}', '{$svname}')");
+					echo "{$name} on {$svname} with {$ip} and {$guid} inserted into database at {$date}<br>";
 				}
 			}
 		}

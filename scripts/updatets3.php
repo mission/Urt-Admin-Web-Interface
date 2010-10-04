@@ -23,10 +23,10 @@ while($row = mysql_fetch_assoc($result))
 	$tsstatus->timeout = 2;
 	$result1 = mysql_query("select * from `".$db_prefix."_ts3` where (`ip`='".$host."' and `port`='".$port."') and `id`='".$vid."';");
 	if(mysql_num_rows($result1)==0){
-		$sql = "insert into `".$db_prefix."_ts3` values('".$host."','".$port."','".$vid."',\"".addslashes("<div class='utilcontainer4'>".$tsstatus->render()."</div>")."\", \"$date\")";
+		$sql = "insert into `".$db_prefix."_ts3` values('".$host."','".$port."','".$vid."',\"".addslashes("<div class='container7'>".$tsstatus->render()."</div>")."\", \"$date\")";
 		mysql_query($sql);
 	} else {
-		$sql = "update `".$db_prefix."_ts3` set `data`=\"".addslashes("<div class='utilcontainer4'>".$tsstatus->render()."</div>")."\", `date`=\"$date\" where (`ip`='".$host."' and `port`='".$port."') and `id`='".$vid."';";
+		$sql = "update `".$db_prefix."_ts3` set `data`=\"".addslashes("<div class='container7'>".$tsstatus->render()."</div>")."\", `date`=\"$date\" where (`ip`='".$host."' and `port`='".$port."') and `id`='".$vid."';";
 		mysql_query($sql);
 	}
 

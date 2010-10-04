@@ -31,7 +31,7 @@ function rconresults() {
 	$out = $r->get_response();
 
 	$out2 = explode("\n", $out);
-	echo "<div class='utilcontainer5'>";
+	echo "<div class='container8'>";
 	if ($out == '') {
 		echo "Command Sent!";
 	}

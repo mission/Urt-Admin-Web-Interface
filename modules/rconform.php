@@ -2,7 +2,7 @@
 function rconform()
 {
 	include("../classes/config_inc.php");
-	echo "<form method='post' action=''><table class='utilcontainer2'><tr><td>";
+	echo "<form method='post' action=''><table class='container8'><tr><td>";
     echo "<table><tr><td colspan='2'><div align='center'><font size='4'><strong>Run RCON Command</strong></font></div></td></tr><tr><td><div align='right'>Server:</div></td><td><div align='left'>";
 	echo "<select name='rconserver'><option selected='selected'>Select</option>";
 	mysql_connect("$db_host", "$db_user", "$db_pass") or die(mysql_error());

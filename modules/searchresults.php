@@ -5,7 +5,7 @@ function searchresults()
 		$sparm = $_REQUEST['sparm'];
 		include("../classes/config_inc.php");
 		if ($sparm != "") {
-		echo "<div align='center'><table><td><tr><table class='utilcontainer3'><tr><td colspan='11'><div align='center'><strong>Player Search</strong></div></td></tr>";
+		echo "<div align='center'><table><td><tr><table class='container9'><tr><td colspan='11'><div align='center'><strong>Player Search</strong></div></td></tr>";
 		echo "<tr><td><strong>Name</strong></td><td>&nbsp;&nbsp;</td><td><strong>IP</strong></td><td>&nbsp;&nbsp;</td><td><strong>GUID</strong></td><td>&nbsp;&nbsp;</td><td><strong>Last Server</strong></td><td>&nbsp;&nbsp;</td><td><strong>Seen Last</strong></td><td>&nbsp;&nbsp;</td><td><strong>Added on</strong></td></tr>";
 		echo "<tr><td colspan='11' bgcolor='black' height='1'></td></tr>";
 		$matchall = $_REQUEST['match'];

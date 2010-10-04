@@ -19,9 +19,9 @@ function playerinfo() {
 		$d = new doaction();
 		echo $d->kick($plslot, $svid);
 	} elseif ($action == "runban") {
-		if($ban_status == "off") {
+		if($CONFIG['ban_status'] == "Off") {
 			$plname = urlencode($plname);
-			$redir = "".$redirect_url."?ip=".$plip."&name=".$plname."";
+			$redir = "".$CONFIG['redirect_url']."?ip=".$plip."&name=".$plname."";
 			echo msg_redirect("Loading Ban Form",$redir,"5");
 		} else {
 			$d = new doaction();
@@ -36,9 +36,9 @@ function playerinfo() {
 			}
 		}
 	} elseif ($action == "ban") {
-		if($ban_status != "on") {
+		if($CONFIG['ban_status'] != "On") {
 			$plname = urlencode($plname);
-			echo msg_redirect("Loading Ban Form","".$redirect_url."?ip=$plip&name=$plname","5");
+			echo msg_redirect("Loading Ban Form","".$CONFIG['redirect_url']."?ip=$plip&name=$plname","5");
 		}
 	}
 	echo "</div>";
@@ -60,7 +60,7 @@ function msg_redirect($msg,$url,$seconds){
               ."<br />\n"
               ."<br />\n\n\n"
               ."<div align=\"center\">\n"
-              ."<table class='utilcontainer4' cellpadding=\"6\" cellspacing=\"1\" border=\"0\" width=\"70%\" bgcolor=\"#E1E1E1\">"
+              ."<table class='container7' cellpadding=\"6\" cellspacing=\"1\" border=\"0\" width=\"70%\" bgcolor=\"#E1E1E1\">"
               ."<tr>"
 	      ."<td bordercolor=\"#808080\">Loading..</td>"
               ."</tr> "

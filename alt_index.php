@@ -9,7 +9,7 @@ require 'classes/q3rcon.php';
 require 'classes/config_inc.php';
 $userIP = $_SERVER['REMOTE_ADDR'];
 
-if ($ipcheckon == "on") {
+if ($CONFIG['ip_check'] == "On") {
 $c = new ipcheck;
 $c->checkip($userIP);
 }

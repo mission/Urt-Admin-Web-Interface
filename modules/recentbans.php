@@ -1,7 +1,7 @@
 <?php
 function recentbans() {
 	include "classes/config_inc.php";
-	echo "<div class='utilcontainer3' align='center'><strong>Last 15 Active Bans</strong><br>";
+	echo "<div class='container9' align='center'><strong>Last 15 Active Bans</strong><br>";
 	echo "<table class='utilcontainer4'><tr><td>Player</td><td>&nbsp;&nbsp;</td><td>IP</td><td>&nbsp;&nbsp;</td><td>Admin</td><td>&nbsp;&nbsp;</td><td width='50'>Reason</td><td>&nbsp;&nbsp;</td><td>Ban Length</td><td>&nbsp;&nbsp;</td><td>Ban Date</td><td>&nbsp;&nbsp;</td><td>Unban Date</td></tr><tr><td colspan='14' bgcolor='white' height='1'></td></tr>";
 	$link = mysql_connect($db_host,$db_user,$db_pass) or die('Unable to establish a DB connection');
 	mysql_select_db($db_database,$link);

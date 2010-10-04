@@ -93,14 +93,14 @@ CREATE TABLE IF NOT EXISTS `urtAdmin_modules` (
 --
 
 INSERT INTO `urtAdmin_modules` (`id`, `order`, `file`, `requiredarg1`, `requiredarg2`, `requiredarg3`, `name`, `pos`, `class`, `status`) VALUES
-(1, 0, 'mainmenu.php', '', '', '', 'Main Menu', 'left', 'utilcontainer6', 'enabled'),
-(2, 1, 'servermenu.php', '', '', '', 'Server Menu', 'left', 'utilcontainer6', 'enabled'),
-(3, 0, 'playerinfo.php', '', '', '', 'Player Info', 'body', '', 'enabled'),
-(4, 1, 'default_body.php', '', '', '', 'Default Body', 'body', 'utilcontainer6', 'enabled'),
-(5, 0, 'adminmenu.php', '', '', '', 'Admin Menu', 'admin', '', 'enabled'),
-(6, 0, 'default_news.php', '', '', '', 'Default News', 'news', '', 'enabled'),
-(7, 2, 'banform.php', '', '', '', 'Ban Form', 'left', 'srvcontainer', 'enabled'),
-(8, 3, 'themes.php', '', '', '', 'Themes', 'left', 'utilcontainer6', 'enabled');
+(1, 0, 'mainmenu.php', '', '', '', 'Main Menu', 'left', 'container4', 'Enabled'),
+(2, 1, 'servermenu.php', '', '', '', 'Server Menu', 'left', 'container4', 'Enabled'),
+(3, 0, 'playerinfo.php', '', '', '', 'Player Info', 'body', '', 'Enabled'),
+(4, 1, 'default_body.php', '', '', '', 'Default Body', 'body', 'container4', 'Enabled'),
+(5, 0, 'adminmenu.php', '', '', '', 'Admin Menu', 'admin', '', 'Enabled'),
+(6, 0, 'default_news.php', '', '', '', 'Default News', 'news', '', 'Enabled'),
+(7, 2, 'banform.php', '', '', '', 'Ban Form', 'left', 'container3', 'Enabled'),
+(8, 3, 'themes.php', '', '', '', 'Themes', 'left', 'container4', 'Enabled');
 
 -- --------------------------------------------------------
 
@@ -176,6 +176,22 @@ CREATE TABLE IF NOT EXISTS `urtAdmin_styles` (
 
 INSERT INTO `urtAdmin_styles` (`id`, `name`, `folder`) VALUES
 (1, 'Default', 'default');
+
+CREATE TABLE IF NOT EXISTS `urtAdmin_settings` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `var` varchar(100) NOT NULL,
+  `value` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+INSERT INTO `urtAdmin_settings` (`var`, `value`) VALUES
+('site_loc', 'http://www.example.com/urtadmin/'),
+('header', '<strong>Welcome to the New Server Administrator Site!</strong>'),
+('subheader', 'This is under construction still!'),
+('title', 'Administrators Site'),
+('ban_status', 'On'),
+('ip_check', 'On'),
+('redirect_url', '');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

@@ -1,6 +1,6 @@
 <?php
 function bansearchform() {
-echo "<form method='post' action=''><table class='utilcontainer2'><tr><td>
+echo "<form method='post' action=''><table class='container8'><tr><td>
 <table width='294'>
   <tr>
   	<td colspan='2'><div align='center' class='style2'><font size='4'><strong>Ban Search</strong></font></div></td>

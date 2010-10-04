@@ -24,10 +24,10 @@ function bansearchresult() {
 
 			 if ($search != "") {
 				if ($sparm == "") {
-					echo "<div class='utilcontainer3'>Please enter a Players name or ip</div>";
+					echo "<div class='container9'>Please enter a Players name or ip</div>";
 					die("&nbsp;");
 				}
-				echo "<div class='utilcontainer3'>Search Results:";
+				echo "<div class='container9'>Search Results:";
 				sleep(1);
 				define("INCLUDE_CHECK", true);
 				include "../classes/config_inc.php";

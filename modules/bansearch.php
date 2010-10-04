@@ -12,7 +12,7 @@ $theme = $_COOKIE['currenttheme'];?>
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<?php echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"../$theme\" media=\"screen\" />";?>
+<?php echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"../templates/$theme/style.css\" media=\"screen\" />";?>
 </head>
 <body>
 <?php

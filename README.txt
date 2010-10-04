@@ -35,6 +35,17 @@ Warning: this requires a mysql database
 database and gets the current players, then adds them to the database
 DONE! :)
 ==============
+
+===Update v1.0 to v1.1===
+1. put the content of this zip file in to your existing site install(backup your config 
+so you can refer to it later for your settings since there is a new config_inc.php that needs to be used).
+2. open the new config_inc.php and edit the database settings to match your db settings in your old config_inc.php, save.
+2. import the updatev1.0-to-v1.1.sql into your current database.
+3. rename/delete the add.php file located in the admin folder
+4. open browser to <site>/admin/ and click the new Settings Manager, change the settings to match your previous ones
+(which is where backing up your old config_inc.php makes this easy)
+Done!
+
 Creating Modules:
 when u create a module, make the function that is inside the same name as the filename without the extension.
 for example: say i have a module named ts3.php, the function inside would be: function ts3(<whatever # of vars>)
