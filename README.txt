@@ -40,11 +40,19 @@ DONE! :)
 1. put the content of this zip file in to your existing site install(backup your config 
 so you can refer to it later for your settings since there is a new config_inc.php that needs to be used).
 2. open the new config_inc.php and edit the database settings to match your db settings in your old config_inc.php, save.
-2. import the updatev1.0-to-v1.1.sql into your current database.
-3. rename/delete the add.php file located in the admin folder
-4. open browser to <site>/admin/ and click the new Settings Manager, change the settings to match your previous ones
+3. import the updatev1.0-to-v1.1.sql into your current database.
+4. rename/delete the add.php file located in the admin folder
+5. open browser to <site>/admin/ and click the new Settings Manager, change the settings to match your previous ones
 (which is where backing up your old config_inc.php makes this easy)
 Done!
+
+===Using B3 database search module===
+This currently only works for one database(however with editing you can make copies of this to use for more than one)
+1. open config_inc.php, edit the new b3 db settings to match your b3 bots database
+2. add a menu item from the menu manager, for href type javascript:PopUp("modules/b3search.php")
+Done :)
+click the new menu item on the main site and it should popup a new window with a search form, when u do a search, if there are no results,
+it will try to cross reference the aliases and clients tables, to find possible matches.
 
 Creating Modules:
 when u create a module, make the function that is inside the same name as the filename without the extension.
