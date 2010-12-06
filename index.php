@@ -270,11 +270,11 @@ if($_SESSION['msg'])
 		echo getmod(body);
 		
 		// User Content;
-		echo "<table><tr><td valign='top' width='28.3%'>";
+		echo "<table><tr><td valign='top' width='220px'>";
 		echo getmod(user1);
-		echo"</td><td valign='top' width='28.3%'>";
+		echo"</td><td valign='top' width='220px'>";
 		echo getmod(user2);
-		echo "</td><td valign='top' width='28.3%'>";
+		echo "</td><td valign='top' width='220px'>";
 		echo getmod(user3);
 		echo "</td></tr></table>";
 				
