@@ -44,9 +44,11 @@ h2{
 }
 
 #main{
-	width:100%;
+	width:700px;
 	/* Centering it in the middle of the page */
-	margin:60px auto;
+	margin-top:50px;
+	margin-left:15%;
+	margin-right:38%;
 }
 
 #main2{
