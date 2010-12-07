@@ -1,4 +1,5 @@
 <?php
+define('INCLUDE_CHECK',true);
 
 include("../classes/functions2.php");
 include("../classes/functions.php");
